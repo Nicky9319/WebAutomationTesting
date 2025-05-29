@@ -7,7 +7,13 @@ async def main():
     async with async_playwright() as p:
 
         # Launch browser in headful mode so you see the window
-        browser = await p.chromium.launch(headless=False, args=["--disable-gpu"])
+        # browser = await p.chromium.launch( headless=False, args=["--disable-gpu"])
+        browser = p.chromium.launch(
+            user_data_dir="/home/paarth/web_automation/playwrith/chrome-linux/chrome",
+            executable_path="/home/paarth/web_automation/playwrith/chrome-linux/chrome",
+            headless=False,  # Set to True if you want to run in headless mode
+            args=["--disable-gpu"]
+        )
         
         # Create a new browser context and page
         context = await browser.new_context()
